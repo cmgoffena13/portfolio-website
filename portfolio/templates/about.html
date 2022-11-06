@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="main main--about">
+    <img class="profile" src="{{ url_for('static', filename='img/profile.jpg') }}" alt="Cortland Goffena's Profile Picture" height="144" width="144">
+    <p>
+        Hi, my name's Cortland Goffena! A self-taught programmer who is a multifaceted human being with a passion for learning the complex.
+        I started with a dual degree in Accounting & Management, but along the way quickly discovered data engineering 
+        and have been an avid fan ever since while dabbling in web development (hence the website, ta-da!).
+    </p>
+    <p>
+        Data engineering is rewarding as it is challenging, with an ever-evolving series of technologies being introduced into the space.
+        The fun never seems to end, with a traditional view of data warehouses and SQL to more modern data lakes and distributed processing.
+        With topics like: <b>Design & Data Modeling</b>, <b>CI/CD</b>, <b>Logging</b>, <b>Metadata</b>, <b>Quality Testing</b>, <b>Monitoring & Alerting</b>, etc. 
+    </p>
+    <p>
+        I specialize in performance and optimization, with a focus on <b>Indexing</b>, <b>Query-Tuning</b>, and <b>Data Structures</b>; 
+        Getting a process to complete is one thing, but doing it efficiently is another.
+        My current skillset is Microsoft based, including but not limited to: <b>SQL Server</b>, <b>SSIS</b>, <b>Advanced T-SQL</b>, <b>Python</b>, <b>Powershell</b>, and <b>Azure</b>. 
+        Although my experience is limited to a traditional data warehouse so far, ever since I encountered my first billion row table I have been fascinated with learning more about distributed processing.
+    </p>
+</main>
+
+{% endblock %}
