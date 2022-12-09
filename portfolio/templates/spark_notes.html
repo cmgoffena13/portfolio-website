@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="main main--spark_notes">
+    <h3>How does Spark work?</h3>
+    <p>
+        Spark is the leading technology in big data and distributed processing. Its execution pattern uses a Spark cluster, a driver, and a number of executors. 
+        The Spark cluster, for each application run, will spin up a driver and a number of executor nodes. The driver is what organizes the logs and work of the executor nodes. 
+        When Spark does transformations on a massive dataset, the dataset is split up into partitions that are spread across the executor nodes. 
+        This allows for the movement of massive amounts of data within memory and cpu constraints. It essentially chunks out the data in parallel.
+    </p>
+    <h3>What is shuffling?</h3>
+    <p>
+        After understanding the way Spark works under the hood, certain transformations require more work from the driver and executors than others. 
+        There are transformations that can be applied to each record without a need to know anything about the other records, such as <code>WHERE Price > 0</code>. 
+        But there are also transformations such <code>GroupBy</code> that require aggregations to occur, where the engine would need to find each record in the group. 
+        To accomplish this, under the hood, the Spark driver has the executor nodes "shuffle" partition records between each other to be able to find each record within the goup designated in the query. 
+        This would also apply for joins between datasets.
+    </p>
+    <h3>Areas of optimization</h3>
+    <p>
+        Here are some levers to look into when optimizing a Spark process. 
+        <ol>
+            <li>
+                First, we'd want to optimize the Spark cluster itself, making sure we have enough executor nodes with the allocated memory and cpu. This can prevent data overflow to disk, which will slow down the process
+            </li>
+            <li>
+                Second, we would want to analyze the Spark plan of the code itself, which could tell us if it is shuffling partitions and where. 
+            </li> 
+            <li>
+                Third, based upon the Spark cluster and Spark plan, we may want to look at tweaking the number of partitions that the dataset is broken down into. 
+                This depends upon the size of the dataset you are working with and can require some math to figure out the sweet spot based upon the size of a partion after adjustment and the size of an executor node.
+            </li>
+            <li>
+                Finally, if the platform we are using allows for indexing capabilities, 
+                such as DataBrick's Hyperspace indexing system, we would want to utilize that technology to try and eliminate partition shuffling altogether. 
+                <em>Note: for more information about Hyperspace indexing see: <a href="https://www.databricks.com/session_na20/hyperspace-an-indexing-subsystem-for-apache-spark"> Hyperspace Indexing </a></em>
+            </li>
+        </ol>
+    </p>    
+
+</main>
+
+{% endblock %}

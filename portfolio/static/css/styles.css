@@ -97,7 +97,7 @@ body {
     line-height: 150%
 }
 
-.main--spark {
+.main--spark_notes {
     max-width: 500px;
     padding: 0 1rem;
     line-height: 150%
@@ -158,6 +158,10 @@ body {
 
 .project-card:hover .project-card__name {
     text-decoration: underline;
+}
+
+.note {
+    text-align: center;
 }
 
 .categories {
